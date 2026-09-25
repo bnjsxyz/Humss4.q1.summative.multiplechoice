@@ -1,0 +1,23 @@
+GITHUB PAGES UPLOAD CHECKLIST
+=============================
+
+1. Extract the ZIP file.
+2. Upload these four files directly to the root of your GitHub repository:
+   - index.html
+   - .nojekyll
+   - README.md
+   - START_HERE.txt
+3. Go to Settings > Pages.
+4. Choose Deploy from a branch.
+5. Select main and / (root), then save.
+6. Wait for GitHub to show the published website address.
+7. Open that published address and share it with students.
+
+IMPORTANT:
+Clicking index.html inside the GitHub repository's Code page shows the source
+as text. That is normal. The interactive website runs only from the published
+GitHub Pages address, usually:
+
+https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/
+
+Do not share a link containing /blob/ or /raw/.

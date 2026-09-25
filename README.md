@@ -2,18 +2,31 @@
 
 A self-contained, responsive Grade 12 summative review on the Discipline of Counseling. It generates a 25-item assessment containing 30% LOTS and 70% HOTS, provides post-submission feedback, supports retakes, restores browser progress, and creates a printable certificate.
 
+## Important: use the GitHub Pages address
+
+Opening `index.html` from the repository's **Code** or file-view page will show the HTML as text. That page is only GitHub's source-code viewer.
+
+After uploading the files and enabling Pages, open the website address shown under **Settings → Pages**. It normally looks like:
+
+```text
+https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/
+```
+
+Do not use an address containing `/blob/`, `/raw/`, or a GitHub repository file-preview page as the student link.
+
 ## Included files
 
 - `index.html` — the complete interactive website
 - `.nojekyll` — ensures GitHub Pages serves it as a plain static website
-- `README.md` — deployment and troubleshooting instructions
+- `README.md` — full deployment and troubleshooting instructions
+- `START_HERE.txt` — short upload checklist
 
 No installation, database, external library, account, or build command is required.
 
 ## Publish with GitHub Pages
 
 1. Create a GitHub repository.
-2. Extract this package and upload the three files inside the folder to the repository root. Keep `index.html` unchanged.
+2. Extract this package and upload the four files directly to the repository root. Keep `index.html` unchanged. This ZIP is flat, so there is no outer website folder to upload accidentally.
 3. Open **Settings → Pages** in the repository.
 4. Under **Build and deployment**, select **Deploy from a branch**.
 5. Select the `main` branch and `/ (root)`, then save.
@@ -40,6 +53,7 @@ The current question set, learner details, selected answers, attempt, and submit
 
 ## Troubleshooting
 
+- **The page displays HTML code as text:** you are viewing the repository file page. Open the published URL shown in **Settings → Pages**.
 - **404 page:** verify that `index.html` is in the repository root and Pages uses `main` and `/ (root)`.
 - **Changes are not visible:** wait for deployment, then refresh without cache.
 - **Progress is not retained:** leave private browsing and allow website storage.
