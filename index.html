@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#DA291C" />
+  <meta name="description" content="A responsive 25-item Grade 12 DIASS summative review on the discipline of counseling." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <title>DIASS Module 1 Summative Review — Discipline of Counseling</title>
+  
+  <style>
+    :root {
+      --crimson: #DA291C;
+      --crimson-deep: #C42519;
+      --crimson-bright: #E82B1D;
+      --gold: #FFB81C;
+      --gold-vivid: #FCAE03;
+      --gold-soft: #FBCC3E;
+      --ink: #201A19;
+      --muted: #665653;
+      --surface: #FFFFFF;
+      --paper: #FDFBF7;
+      --line: #E8DACF;
+      
+      --correct-green: #198754;
+      --correct-bg: #E8F5E9;
+      --wrong-red: #C42519;
+      --wrong-bg: #FFEBEE;
+      
+      --shadow-sm: 0 4px 12px rgba(196, 37, 25, 0.08);
+      --shadow-md: 0 10px 30px rgba(196, 37, 25, 0.12);
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; overflow-x: hidden; }
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(circle at 10% 10%, rgba(255, 184, 28, 0.18), transparent 30%),
+                  radial-gradient(circle at 90% 90%, rgba(218, 41, 28, 0.12), transparent 35%),
+                  #F7F3EE;
+      color: var(--ink);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-bottom: 60px;
+      overflow-wrap: anywhere;
+      overscroll-behavior-x: none;
+    }
+
+    /* Top Navigation */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: linear-gradient(115deg, var(--crimson-deep) 0%, var(--crimson) 60%, var(--crimson-bright) 100%);
+      color: #FFFFFF;
+      padding: 14px 24px;
+      box-shadow: 0 4px 18px rgba(196, 37, 25, 0.28);
+    }
+    .topbar-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-badge {
+      width: 44px;
+      height: 44px;
+      background: var(--gold);
+      color: var(--crimson-deep);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 1.25rem;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+    .brand-text h1 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .brand-text p {
+      font-size: 0.78rem;
+      color: var(--gold-soft);
+      font-weight: 600;
+    }
+
+    /* Progress Bar */
+    .progress-wrapper {
+      flex: 1;
+      min-width: 220px;
+      max-width: 380px;
+    }
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.76rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #FFE6B0;
+    }
+    .progress-track {
+      height: 9px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-vivid));
+      border-radius: 999px;
+      transition: width 0.35s ease;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+
+    /* Student Header Card */
+    .student-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-top: 6px solid var(--crimson);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 24px;
+    }
+    .student-card h2 {
+      color: var(--crimson-deep);
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .input-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .input-field label {
+      font-size: 0.8rem;
+      font-weight: 750;
+      color: var(--crimson-deep);
+      text-transform: uppercase;
+    }
+    .input-field input {
+      padding: 10px 14px;
+      border: 2px solid var(--line);
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      outline: none;
+      background: var(--paper);
+    }
+    .input-field input:focus { border-color: var(--crimson); background: #FFFFFF; }
+
+    /* Single Meeting Divider */
+    .meeting-divider {
+      margin: 36px 0 18px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, var(--crimson-deep), var(--crimson));
+      color: white;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+    }
+    .meeting-divider h3 { font-size: 1.15rem; font-weight: 800; }
+
+    /* Question Cards */
+    .question-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.15s ease;
+    }
+    .q-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .q-num {
+      background: #FFF1F0;
+      color: var(--crimson-deep);
+      font-weight: 850;
+      font-size: 0.82rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #FFD0CA;
+    }
+    .q-text {
+      font-size: 0.98rem;
+      font-weight: 650;
+      margin-bottom: 16px;
+    }
+    .options-grid { display: grid; gap: 10px; }
+    .option-btn {
+      width: 100%;
+      text-align: left;
+      padding: 12px 16px;
+      border: 1.5px solid var(--line);
+      background: var(--paper);
+      border-radius: var(--radius-sm);
+      color: var(--ink);
+      font-size: 0.92rem;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      align-items: flex-start;
+      gap: 8px;
+      transition: all 0.18s ease;
+    }
+    .option-btn .choice-letter {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: #EFE7DE;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 0.78rem;
+    }
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--crimson);
+      background: #FFF9F8;
+    }
+    .option-btn.selected {
+      border-color: var(--crimson-deep);
+      background: #FFF2F0;
+      font-weight: 600;
+    }
+    .option-btn.selected .choice-letter { background: var(--crimson); color: white; }
+    
+    /* Post-Submit Reveal Styles */
+    .option-btn.correct {
+      border-color: var(--correct-green) !important;
+      background: var(--correct-bg) !important;
+      color: #0B5B3D !important;
+      font-weight: 700;
+    }
+    .option-btn.correct .choice-letter { background: var(--correct-green); color: white; }
+    .option-btn.wrong {
+      border-color: var(--wrong-red) !important;
+      background: var(--wrong-bg) !important;
+      color: var(--crimson-deep) !important;
+    }
+    .option-btn.wrong .choice-letter { background: var(--wrong-red); color: white; }
+
+    .rationale-box {
+      display: none;
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.87rem;
+      line-height: 1.5;
+    }
+    .rationale-box.show { display: block; animation: fadeIn 0.25s ease forwards; }
+    .rationale-box.good { background: var(--correct-bg); border-left: 5px solid var(--correct-green); color: #0d563a; }
+    .rationale-box.bad { background: var(--wrong-bg); border-left: 5px solid var(--wrong-red); color: #7b1d16; }
+
+    /* Action Panel */
+    .action-panel {
+      margin-top: 32px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .btn {
+      padding: 13px 28px;
+      border-radius: var(--radius-md);
+      font-weight: 800;
+      cursor: pointer;
+      border: none;
+      text-transform: uppercase;
+      transition: transform 0.2s;
+    }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary { background: linear-gradient(135deg, var(--crimson-deep), var(--crimson)); color: white; }
+    .btn-secondary { background: var(--gold); color: var(--crimson-deep); }
+    .btn-primary:not(:disabled):hover, .btn-secondary:not(:disabled):hover { transform: translateY(-2px); }
+    
+    #postSubmitActions { display: none; }
+
+    /* Certificate */
+    .certificate-container { display: none; margin-top: 40px; }
+    .certificate-card {
+      background: #FFFDF9;
+      border: 14px solid var(--crimson-deep);
+      outline: 4px solid var(--gold);
+      outline-offset: -8px;
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      text-align: center;
+      position: relative;
+    }
+    .cert-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: var(--crimson);
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 850;
+      border-radius: 999px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .cert-title { font-size: 2.2rem; font-weight: 900; color: var(--crimson-deep); text-transform: uppercase; }
+    .cert-name {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--crimson);
+      border-bottom: 2px dashed var(--gold-vivid);
+      display: inline-block;
+      padding: 4px 28px;
+      margin: 12px 0;
+      text-transform: uppercase;
+    }
+    .cert-stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin: 20px 0; }
+    .cert-stat-pill {
+      background: #FFF8E8;
+      border: 1px solid var(--gold);
+      padding: 8px 18px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+    }
+    .cert-stat-pill strong { color: var(--crimson-deep); font-size: 1.05rem; }
+    .cert-footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 36px;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+    }
+    .cert-seal {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 6px;
+      border-radius: 50%;
+      border: 4px double var(--crimson-deep);
+      background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+      display: grid;
+      place-items: center;
+      color: var(--crimson-deep);
+      font-weight: 900;
+      font-size: 0.75rem;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media print {
+      body { background: white; }
+      .topbar, .student-card, .meeting-divider, #quizContainer, .action-panel, .no-print { display: none !important; }
+      .certificate-container { display: block !important; margin: 0; }
+      .certificate-card { border-width: 8px; padding: 28px; }
+    }
+    @media (max-width: 768px) {
+      .cert-footer-grid { grid-template-columns: 1fr; gap: 16px; }
+      .input-field input { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-container">
+      <div class="brand-group">
+        <div class="brand-badge">DI</div>
+        <div class="brand-text">
+          <h1>Grade 12 HUMSS • DIASS</h1>
+          <p>Summative Review: Discipline of Counseling</p>
+        </div>
+      </div>
+      <div class="progress-wrapper">
+        <div class="progress-meta">
+          <span id="progressText">0 / 25 Items Answered</span>
+          <span id="attemptTracker">Attempt: 1</span>
+        </div>
+        <div class="progress-track" id="progressTrack" role="progressbar" aria-label="Review Progress" aria-valuemin="0" aria-valuemax="25" aria-valuenow="0">
+          <div class="progress-fill" id="progressBar"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <section class="student-card">
+      <h2>Student Check-In Profile</h2>
+      <div class="form-grid">
+        <div class="input-field">
+          <label for="studentName">Complete Name</label>
+          <input type="text" id="studentName" placeholder="e.g., Dela Cruz, Juan P." required />
+        </div>
+        <div class="input-field">
+          <label for="studentSection">Grade &amp; Section</label>
+          <input type="text" id="studentSection" placeholder="e.g., 12 HUMSS" required />
+        </div>
+        <div class="input-field">
+          <label for="checkinTime">Check-In Timestamp</label>
+          <input type="text" id="checkinTime" readonly />
+        </div>
+      </div>
+    </section>
+
+    <div class="meeting-divider">
+      <h3>Summative Assessment: 25 Items</h3>
+      <span style="font-size: 0.85rem; opacity: 0.9;" id="difficultyIndicator">30% LOTS / 70% HOTS Active</span>
+    </div>
+
+    <div id="quizContainer"></div>
+
+    <section class="action-panel no-print">
+      <div id="preSubmitActions">
+        <h3 style="color: var(--crimson-deep); margin-bottom: 8px;">Ready to Submit?</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 16px;">Make sure all 25 items are answered. Results and correct answers will be revealed after submission.</p>
+        <button class="btn btn-primary" id="submitBtn">Submit Assessment</button>
+      </div>
+
+      <div id="postSubmitActions">
+        <h3 style="color: var(--crimson-deep); margin-bottom: 8px;">Assessment Completed</h3>
+        <p style="color: var(--muted); font-size: 0.9rem;">Review your feedback above. You may generate your certificate or retake the quiz to improve your score.</p>
+        <div class="btn-group">
+          <button class="btn btn-primary" id="certBtn">Generate Certificate</button>
+          <button class="btn btn-secondary" id="retakeBtn">Retake Quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificate -->
+    <section class="certificate-container" id="certificateView">
+      <div class="certificate-card">
+        <span class="cert-badge">Academic Excellence &amp; Mastery</span>
+        <h2 class="cert-title">Certificate of Completion</h2>
+        <p style="color: var(--muted); font-weight: 600; margin-bottom: 24px;">Applied Social Sciences (DIASS) — Discipline of Counseling</p>
+        
+        <p style="font-size: 0.88rem; text-transform: uppercase; color: var(--muted);">Conferred to</p>
+        <div class="cert-name" id="certStudentName">STUDENT NAME</div>
+        <p style="font-weight: 700; color: var(--crimson-deep); margin-bottom: 12px;" id="certStudentSection">Grade 12 HUMSS</p>
+
+        <p style="max-width: 680px; margin: 0 auto 24px; color: var(--ink);">
+          for successfully demonstrating analytical mastery and ethical problem-solving across 
+          <strong>25 Rigorous Scenarios</strong> covering the principles, professional functions, 
+          and therapeutic approaches in Counseling.
+        </p>
+
+        <div class="cert-stats">
+          <div class="cert-stat-pill">Final Score: <strong id="certScore">0 / 25</strong></div>
+          <div class="cert-stat-pill">Proficiency: <strong id="certPercentage">0%</strong></div>
+          <div class="cert-stat-pill">Total Attempts: <strong id="certAttempts">1</strong></div>
+          <div class="cert-stat-pill">Started: <strong id="certStarted">--/--/----</strong></div>
+          <div class="cert-stat-pill">Completed: <strong id="certTimestamp">--/--/----</strong></div>
+        </div>
+
+        <div class="cert-footer-grid">
+          <div>
+            <div style="font-family: cursive; font-size: 1.5rem; color: var(--crimson);">Verified</div>
+            <h4 style="color: var(--crimson-deep); font-size: 0.9rem;">HUMSS Faculty</h4>
+          </div>
+          <div>
+            <div class="cert-seal">DIASS<br>VERIFIED</div>
+          </div>
+          <div>
+            <div style="font-family: cursive; font-size: 1.5rem; color: var(--crimson);">Academic</div>
+            <h4 style="color: var(--crimson-deep); font-size: 0.9rem;">Coordinator</h4>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 24px;" class="no-print">
+        <button class="btn btn-secondary" onclick="window.print()">🖨️ Print / Save as PDF</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Robust Question Bank: 15 LOTS and 25 HOTS (Total 40 questions to allow shuffling on retakes)
+    const questionBank = [
+      // LOTS (Lower Order Thinking Skills: Remembering & Understanding)
+      { type: 'LOTS', q: "Which of the following best defines counseling as a professional discipline?", opts: ["Telling people what to do.", "A helping relationship empowering clients to reach goals.", "Giving informal advice over coffee.", "Disciplining students for bad behavior."], ans: 1, rat: "Counseling empowers clients to make autonomous decisions, distinguishing it from informal advice or discipline." },
+      { type: 'LOTS', q: "Which goal of counseling aims to stop a difficulty from worsening, like addressing poor study habits before a student fails?", opts: ["Remedial", "Preventive", "Enhancement", "Exploratory"], ans: 1, rat: "Preventive goals proactively address issues before they result in undesirable outcomes." },
+      { type: 'LOTS', q: "Where might a counselor assist employees with workplace stress and career development?", opts: ["Schools", "Hospitals", "Workplaces", "Correctional Facilities"], ans: 2, rat: "Workplace counselors address employee well-being and stress within organizational settings." },
+      { type: 'LOTS', q: "Which principle emphasizes that the counselor must not judge or condemn the client, regardless of their background?", opts: ["Learning", "Acceptance", "Permissiveness", "Placement"], ans: 1, rat: "Acceptance requires treating the client with positive regard and dignity, without shaming them." },
+      { type: 'LOTS', q: "What ethical principle means 'to do no harm' to the client?", opts: ["Beneficence", "Nonmaleficence", "Autonomy", "Justice"], ans: 1, rat: "Nonmaleficence is the strict ethical obligation to avoid actions that cause unnecessary risk or harm." },
+      { type: 'LOTS', q: "What is a key difference between informal helping and professional counseling?", opts: ["Informal helping is structured.", "Professional counseling uses systematic, ethical procedures.", "Counseling only happens between friends.", "Informal helping requires a PRC license."], ans: 1, rat: "Professional counseling is systematic, goal-oriented, and bound by ethical and legal standards." },
+      { type: 'LOTS', q: "Developing emotional control and a positive self-concept falls under which major goal?", opts: ["Psychological", "Physiological", "Cognitive", "Exploratory"], ans: 0, rat: "Psychological goals focus on emotional regulation, self-concept, and social interactions." },
+      { type: 'LOTS', q: "A community faces uncertainty and fear after a typhoon. What scope of counseling is required?", opts: ["Individual", "Marital", "Community", "Career"], ans: 2, rat: "Community counseling addresses collective trauma and coordinated mental health support for affected groups." },
+      { type: 'LOTS', q: "If a counselor administers a personality test to understand a student's strengths, this function is called:", opts: ["Referral", "Individual Assessment", "Prevention", "Research"], ans: 1, rat: "Individual assessment involves using tests and tools to understand a client's characteristics." },
+      { type: 'LOTS', q: "Protecting a client's private information entrusted during a session is known as:", opts: ["Fidelity", "Autonomy", "Confidentiality", "Immediacy"], ans: 2, rat: "Confidentiality ensures private disclosures are protected, subject to specific ethical/legal limits." },
+      { type: 'LOTS', q: "What Republic Act professionalized Guidance and Counseling in the Philippines?", opts: ["RA 9258", "RA 10533", "RA 7836", "RA 11036"], ans: 0, rat: "RA 9258 is the Guidance and Counseling Act of 2004, mandating PRC licensure." },
+      { type: 'LOTS', q: "When a counselor tries to understand the client's problem from the client's own perspective, they are applying the principle of:", opts: ["Thinking with the individual", "Permissiveness", "Remediation", "Enlightenment"], ans: 0, rat: "Thinking 'with' the individual implies deep empathy and partnering in understanding the issue." },
+      { type: 'LOTS', q: "The goal that focuses on helping clients make amends for previous destructive behavior is known as:", opts: ["Self-actualization", "Restitution", "Insight", "Cognitive Change"], ans: 1, rat: "Restitution focuses on helping the client repair the harm caused by their prior behaviors." },
+      { type: 'LOTS', q: "Which ethical principle involves honoring professional commitments and maintaining loyalty to the client?", opts: ["Justice", "Autonomy", "Fidelity", "Beneficence"], ans: 2, rat: "Fidelity involves trustworthiness, loyalty, and fulfilling professional responsibilities." },
+      { type: 'LOTS', q: "The function that connects a client with an external expert when the client's needs exceed the counselor's training is:", opts: ["Consultation", "Placement", "Referral", "Prevention"], ans: 2, rat: "Referral is ethically required when a client needs specialized assistance beyond the counselor's scope." },
+
+      // HOTS (Higher Order Thinking Skills: Applying, Analyzing, Evaluating, Creating)
+      { type: 'HOTS', q: "Counselor A uses a standardized test but modifies her questioning style to match the client's cultural background. What does this represent in counseling?", opts: ["Strict adherence to scientific rules.", "The balance of Art (subjective flexibility) and Science (objective assessment).", "Ignoring empirical data for empathy.", "Delegating the assessment process to the client."], ans: 1, rat: "The 'Art' of counseling is the flexible, creative adaptation of methods to fit the specific client, while 'Science' is the use of structured tools." },
+      { type: 'HOTS', q: "A counselor trains teachers on how to handle students with panic attacks without revealing specific student names. How is the counselor assisting the students?", opts: ["Directly through Placement", "Directly through Group Counseling", "Indirectly through Consultation", "Indirectly through Accountability"], ans: 2, rat: "Consultation involves helping clients indirectly by advising or training the systems (like teachers) around them." },
+      { type: 'HOTS', q: "A student confesses intent to severely harm a peer after school. The counselor reports this to the principal. How should this action be ethically evaluated?", opts: ["It violates ethics because confidentiality is absolute.", "It is ethical because safety threats mandate breaking confidentiality.", "It violates autonomy because the student should be allowed to act.", "It is only ethical if the student gave written permission."], ans: 1, rat: "Confidentiality must be breached when there is a clear, imminent danger to the client or others (duty to warn/protect)." },
+      { type: 'HOTS', q: "A mandated client sits with arms crossed and says, 'I don't want to be here.' Which counselor response best applies the principle of respecting the individual?", opts: ["'You must talk or face suspension.'", "'Let's acknowledge that you were forced to come. How can we make this time useful?'", "'I will ignore you until you speak.'", "'I am calling your parents to report resistance.'"], ans: 1, rat: "Acknowledging reluctance validates the client's feelings and avoids power struggles, fostering organic trust and autonomy." },
+      { type: 'HOTS', q: "Compare these questions: (1) 'What happened after class?' vs (2) 'Are you angry because you secretly feel abandoned?' What is the difference in technique?", opts: ["(1) is maximum-led; (2) is non-directive.", "(1) is minimum-led providing client freedom; (2) is maximum-led introducing the counselor's assumptions.", "Both questions are unethical.", "(2) is the preferred open question in person-centered counseling."], ans: 1, rat: "Minimum-led questions leave space for the client's own narrative, whereas maximum-led questions insert the counselor's heavy interpretations." },
+      { type: 'HOTS', q: "A student believes: 'I failed one quiz, so I am incapable of graduating.' The counselor helps the student trace the link between this thought and their avoidant behavior. Which therapeutic approach is utilized?", opts: ["Gestalt Therapy", "Cognitive Behavioral Therapy (CBT)", "Family Systems", "Person-Centered Therapy"], ans: 1, rat: "CBT targets the interconnectedness of thoughts, emotions, and behaviors, specifically altering cognitive distortions." },
+      { type: 'HOTS', q: "If a teenager breaks curfew repeatedly, and the counselor explores how the parents communicate rules and handle conflict rather than just blaming the teen, the counselor is utilizing a:", opts: ["Individual Scope", "Community Scope", "Family Systems Approach", "Career Scope"], ans: 2, rat: "Family Systems looks beyond the individual 'problem child' and analyzes the interactional patterns maintaining the behavior." },
+      { type: 'HOTS', q: "A counselor strongly believes a student should take Engineering, but the student wants Arts. The counselor ethically supports the student's choice for Arts. This upholds the principle of:", opts: ["Nonmaleficence", "Autonomy", "Remediation", "Assessment"], ans: 1, rat: "Autonomy respects the client's right to self-determination and meaningful choice in their own life direction." },
+      { type: 'HOTS', q: "A counselor asks: 'Think of a time last month when you felt overwhelmed but managed to finish your tasks anyway. What were you doing differently?' What technique is demonstrated?", opts: ["Psychodynamic Analysis", "Searching for Exceptions in SFBT", "Gestalt Empty Chair", "Play Therapy"], ans: 1, rat: "Solution-Focused Brief Therapy (SFBT) focuses on solutions and identifying past exceptions to the problem rather than analyzing its roots." },
+      { type: 'HOTS', q: "A counselor refuses to use a highly controversial, unproven technique on a vulnerable client despite the client requesting it, opting instead for an evidence-based approach. Which two principles are balanced here?", opts: ["Fidelity and Justice", "Autonomy and Nonmaleficence", "Beneficence and Placement", "Permissiveness and Learning"], ans: 1, rat: "The counselor restricts Autonomy (the client's request) to uphold Nonmaleficence (avoiding unproven harm) and Beneficence." },
+      { type: 'HOTS', q: "A client feels intense, unexplained anger toward authority figures. The counselor suspects this is a recurring interpersonal pattern stemming from early childhood defenses. Which approach is the counselor leaning toward?", opts: ["Solution-Focused Brief Therapy", "Psychodynamic Therapy", "Person-Centered Therapy", "Cognitive Behavioral Therapy"], ans: 1, rat: "Psychodynamic therapy specifically explores unconscious motives, early relationships, and recurring defense mechanisms." },
+      { type: 'HOTS', q: "When a client suddenly falls silent and looks at the door during a session, the counselor says: 'I notice you became quiet just as we mentioned your father. What are you experiencing right now between us?' This applies:", opts: ["Immediacy", "Maximum-led questioning", "Empty Chair Technique", "Cognitive Reframing"], ans: 0, rat: "Immediacy explores what is happening in the 'here and now' of the therapeutic relationship to uncover unspoken feelings." },
+      { type: 'HOTS', q: "While acting in the ROLE of a collaborator, a counselor evaluates a peer-mentoring program's effectiveness using survey data. Which Gibson & Mitchell function is utilized?", opts: ["Prevention", "Accountability & Evaluation", "Individual Counseling", "Consultation"], ans: 1, rat: "Evaluating program outcomes and being answerable for results falls strictly under the Evaluation and Accountability function." },
+      { type: 'HOTS', q: "After recovering from severe academic anxiety, a Grade 12 student volunteers to lead a peer-support group to help younger students. The counselor recognizes this as achieving the expanded goal of:", opts: ["Restitution", "Generality", "Physiological Education", "Insight"], ans: 1, rat: "Generality occurs when a client extends their growth to care for others and contribute to the collective good." },
+      { type: 'HOTS', q: "A client struggles with unspoken resentment toward an absent parent. The counselor asks the client to speak directly to an empty chair representing the parent. The theoretical goal is:", opts: ["To practice theatrical performance.", "To alter cognitive distortions logically.", "To bring unexpressed, 'unfinished business' into present-moment awareness.", "To identify past exceptions to the problem."], ans: 2, rat: "Gestalt therapy uses the Empty Chair technique to bring unresolved feelings into the 'here and now' for integration." },
+      { type: 'HOTS', q: "The counselor and client collaboratively break down a broad goal ('Stop procrastinating') into a structured weekly schedule, and agree to review it next Friday. Which stage of counseling is active?", opts: ["Initial Disclosure", "In-depth Exploration", "Commitment to Action", "Termination"], ans: 2, rat: "Commitment to Action translates insights from exploration into tangible decisions, action plans, and monitoring." },
+      { type: 'HOTS', q: "Carl Rogers posited that clients have an innate capacity for growth if provided three core conditions. How are these best applied in a session?", opts: ["By giving strict advice, direction, and discipline.", "Through Empathy, Unconditional Positive Regard, and Genuineness to facilitate self-discovery.", "By focusing solely on psychological diagnosis.", "By enforcing restitution and generality."], ans: 1, rat: "Person-Centered Therapy relies on Empathy, Unconditional Positive Regard, and Congruence to create a safe space for self-directed change." },
+      { type: 'HOTS', q: "A school counselor realizes that deaf students are not utilizing the guidance office because there is no sign language interpreter. The counselor advocates for funding to hire an interpreter. This primarily upholds:", opts: ["Justice (equitable access and fairness)", "Autonomy", "Nonmaleficence", "Fidelity"], ans: 0, rat: "Justice mandates fairness and equitable treatment, meaning services must be adapted so all clients have meaningful access." },
+      { type: 'HOTS', q: "During a crisis intervention for a student whose house just burned down, what is the counselor's immediate priority?", opts: ["Analyzing the student's childhood trauma.", "Prioritizing immediate safety, stabilization, and linking to practical resources.", "Administering a personality test.", "Setting a long-term career plan."], ans: 1, rat: "Crisis intervention prioritizes immediate stabilization, safety, and linking to resources, rather than deep psychological analysis." },
+      { type: 'HOTS', q: "A student confides: 'I failed the qualifying exam; my life is ruined.' Instead of saying 'Do not worry,' the counselor asks: 'It feels like your entire future was tied to this result; how is this affecting your view of yourself today?' This exemplifies:", opts: ["Principle of Placement", "Principle of Thinking with the Individual", "Diagnostic Categorization", "Unilateral Direction"], ans: 1, rat: "Thinking with the individual (empathic attunement) means entering the client's internal frame of reference rather than dismissing their feelings." },
+      { type: 'HOTS', q: "Following a disciplinary infraction where a student circulated false online rumors, the counselor facilitates a process where the student acknowledges the harm and participates in an anti-bullying project. This fulfills:", opts: ["Enlightenment", "Restitution", "Self-Actualization", "Physiological Adjustment"], ans: 1, rat: "Restitution is the counseling goal where the client is assisted in making amends and repairing the damage caused by prior destructive behaviors." },
+      { type: 'HOTS', q: "Before the final research defense season begins, the guidance office holds mandatory stress-inoculation workshops for all students to avoid academic burnout. What type of goal does this illustrate?", opts: ["Remedial Goal", "Preventive Goal", "Reinforcement Goal", "Exploratory Goal"], ans: 1, rat: "Preventive goals proactively build coping mechanisms to prevent anticipated problems and undesirable outcomes before a crisis occurs." },
+      { type: 'HOTS', q: "Which of the following scenarios best differentiates professional counseling from friendly, informal advice?", opts: ["A best friend shares personal opinions on what they would do.", "A trained practitioner builds an ethical relationship using objective assessment to foster self-directed decisions.", "A class adviser scolds a student to enforce guidelines.", "A relative gives financial support during a crisis."], ans: 1, rat: "Professional counseling operates within a structured, theory-grounded, ethical relationship focused on empowering the client's autonomous resolution." },
+      { type: 'HOTS', q: "A 17-year-old student reveals during a session: 'I brought a weapon to school today and plan to hurt my classmate.' What is the counselor's ethical and legal obligation?", opts: ["Keep total confidentiality to protect client trust.", "Break confidentiality to prevent clear, imminent harm by informing designated safety personnel.", "Post an anonymous warning on the school bulletin board.", "Immediately terminate the counseling relationship."], ans: 1, rat: "The duty to protect and warn supersedes confidentiality when there is clear, imminent danger to the client or others." },
+      { type: 'HOTS', q: "Which of the following counselor actions represents a clear ethical violation of the principle of Autonomy?", opts: ["Exploring the pros and cons of three different college majors with a student.", "Coercing a student to file a formal case against a peer because the counselor feels morally outraged.", "Allowing the client to set their own pace in discussing past trauma.", "Respecting a student's cultural values regarding decision making."], ans: 1, rat: "Coercing or imposing the counselor's personal desires violates the client's right to self-determined decisions." }
+    ];
+
+    const STORAGE_KEY = 'diass_module1_summative_2_v1';
+    const defaultState = () => ({
+      attempt: 1,
+      score: 0,
+      answers: {},
+      currentTest: [],
+      checkinTimeStr: '',
+      completedAt: '',
+      studentName: '',
+      studentSection: '',
+      isSubmitted: false
+    });
+
+    function loadState() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        return saved && typeof saved === 'object' ? { ...defaultState(), ...saved } : defaultState();
+      } catch (error) {
+        return defaultState();
+      }
+    }
+
+    const state = loadState();
+
+    function saveState() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+      catch (error) { /* The current tab remains usable when storage is blocked. */ }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const now = new Date();
+      if (!state.checkinTimeStr) state.checkinTimeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' - ' + now.toLocaleDateString();
+      document.getElementById('checkinTime').value = state.checkinTimeStr;
+      document.getElementById('studentName').value = state.studentName || '';
+      document.getElementById('studentSection').value = state.studentSection || '';
+
+      initQuiz(Array.isArray(state.currentTest) && state.currentTest.length === 25);
+
+      document.getElementById('submitBtn').addEventListener('click', submitQuiz);
+      document.getElementById('certBtn').addEventListener('click', generateCertificate);
+      document.getElementById('retakeBtn').addEventListener('click', retakeQuiz);
+      document.getElementById('studentName').addEventListener('input', event => { state.studentName = event.target.value; saveState(); });
+      document.getElementById('studentSection').addEventListener('input', event => { state.studentSection = event.target.value; saveState(); });
+      saveState();
+    });
+
+    // Core Logic: 30% LOTS (7 items) and 70% HOTS (18 items)
+    function getAdaptiveQuestions() {
+      const lotsQ = questionBank.filter(q => q.type === 'LOTS');
+      const hotsQ = questionBank.filter(q => q.type === 'HOTS');
+
+      // Shuffle helper
+      const shuffle = arr => arr.sort(() => 0.5 - Math.random());
+
+      // Select exactly 7 LOTS and 18 HOTS for a 25-item test
+      const selected = [
+        ...shuffle(lotsQ).slice(0, 7),
+        ...shuffle(hotsQ).slice(0, 18)
+      ];
+
+      // Final shuffle to mix LOTS and HOTS randomly in the UI
+      return shuffle(selected);
+    }
+
+    function initQuiz(restoreSaved = false) {
+      if (!restoreSaved) {
+        state.isSubmitted = false;
+        state.answers = {};
+        state.score = 0;
+        state.completedAt = '';
+        state.currentTest = getAdaptiveQuestions();
+      }
+      
+      document.getElementById('attemptTracker').textContent = `Attempt: ${state.attempt}`;
+      
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = '';
+
+      state.currentTest.forEach((q, index) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.id = `qCard_${index}`;
+
+        const letters = ['A', 'B', 'C', 'D'];
+        let optionsHtml = '';
+        q.opts.forEach((opt, optIdx) => {
+          optionsHtml += `
+            <button type="button" class="option-btn" onclick="handleSelect(${index}, ${optIdx})" id="opt_${index}_${optIdx}">
+              <span class="choice-letter">${letters[optIdx]}</span>
+              <span>${opt}</span>
+            </button>
+          `;
+        });
+
+        // The clue (q-diff or q-topic) has been completely removed from the header below
+        card.innerHTML = `
+          <div class="q-header">
+            <span class="q-num">Item ${index + 1} of 25</span>
+          </div>
+          <div class="q-text">${q.q}</div>
+          <div class="options-grid">
+            ${optionsHtml}
+          </div>
+          <div class="rationale-box" id="rat_${index}"></div>
+        `;
+        container.appendChild(card);
+        if (state.answers[index] !== undefined) {
+          const selected = document.getElementById(`opt_${index}_${state.answers[index]}`);
+          if (selected) selected.classList.add('selected');
+        }
+      });
+
+      const answeredCount = Object.keys(state.answers).length;
+      document.getElementById('progressBar').style.width = `${(answeredCount / 25) * 100}%`;
+      document.getElementById('progressText').textContent = `${answeredCount} / 25 Items Answered`;
+      document.getElementById('progressTrack').setAttribute('aria-valuenow', String(answeredCount));
+      document.getElementById('preSubmitActions').style.display = state.isSubmitted ? 'none' : 'block';
+      document.getElementById('postSubmitActions').style.display = state.isSubmitted ? 'block' : 'none';
+      document.getElementById('certificateView').style.display = 'none';
+      if (state.isSubmitted) revealSubmittedResults();
+      saveState();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.handleSelect = function(qIndex, optIdx) {
+      if (state.isSubmitted) return; // Lock selections after submit
+
+      state.answers[qIndex] = optIdx;
+      
+      // Update UI for selection
+      const q = state.currentTest[qIndex];
+      for (let i = 0; i < q.opts.length; i++) {
+        document.getElementById(`opt_${qIndex}_${i}`).classList.remove('selected');
+      }
+      document.getElementById(`opt_${qIndex}_${optIdx}`).classList.add('selected');
+
+      // Update Progress
+      const answeredCount = Object.keys(state.answers).length;
+      document.getElementById('progressBar').style.width = `${(answeredCount / 25) * 100}%`;
+      document.getElementById('progressText').textContent = `${answeredCount} / 25 Items Answered`;
+      document.getElementById('progressTrack').setAttribute('aria-valuenow', String(answeredCount));
+      saveState();
+    };
+
+    function submitQuiz() {
+      const answeredCount = Object.keys(state.answers).length;
+      if (answeredCount < 25) {
+        const proceed = confirm(`You have only answered ${answeredCount} of 25 items. Are you sure you want to submit? Unanswered items will be marked wrong.`);
+        if (!proceed) return;
+      }
+
+      state.isSubmitted = true;
+      state.completedAt = new Date().toISOString();
+      revealSubmittedResults();
+      saveState();
+
+      document.getElementById('qCard_0').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function revealSubmittedResults() {
+      let score = 0;
+
+      state.currentTest.forEach((q, index) => {
+        const userAns = state.answers[index];
+        const isCorrect = userAns === q.ans;
+        
+        // Lock all buttons
+        for (let i = 0; i < q.opts.length; i++) {
+          document.getElementById(`opt_${index}_${i}`).disabled = true;
+        }
+
+        const ratBox = document.getElementById(`rat_${index}`);
+        
+        if (userAns !== undefined) {
+          const userBtn = document.getElementById(`opt_${index}_${userAns}`);
+          const correctBtn = document.getElementById(`opt_${index}_${q.ans}`);
+          
+          if (isCorrect) {
+            score++;
+            userBtn.classList.add('correct');
+            ratBox.className = 'rationale-box show good';
+            ratBox.innerHTML = `<strong>✓ Correct:</strong> ${q.rat}`;
+          } else {
+            userBtn.classList.add('wrong');
+            correctBtn.classList.add('correct');
+            ratBox.className = 'rationale-box show bad';
+            ratBox.innerHTML = `<strong>✕ Incorrect:</strong> ${q.rat}`;
+          }
+        } else {
+          // Unanswered
+          const correctBtn = document.getElementById(`opt_${index}_${q.ans}`);
+          correctBtn.classList.add('correct');
+          ratBox.className = 'rationale-box show bad';
+          ratBox.innerHTML = `<strong>✕ Unanswered:</strong> ${q.rat}`;
+        }
+      });
+
+      state.score = score;
+
+      document.getElementById('preSubmitActions').style.display = 'none';
+      document.getElementById('postSubmitActions').style.display = 'block';
+    }
+
+    function generateCertificate() {
+      const nameVal = document.getElementById('studentName').value.trim();
+      const sectionVal = document.getElementById('studentSection').value.trim();
+
+      if (!nameVal || !sectionVal) {
+        alert('Please fill in your Student Name and Section at the top before generating your Certificate.');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      document.getElementById('certStudentName').textContent = nameVal;
+      document.getElementById('certStudentSection').textContent = sectionVal;
+      document.getElementById('certScore').textContent = `${state.score} / 25`;
+      document.getElementById('certPercentage').textContent = `${Math.round((state.score / 25) * 100)}%`;
+      document.getElementById('certAttempts').textContent = state.attempt;
+      state.studentName = nameVal;
+      state.studentSection = sectionVal;
+      document.getElementById('certStarted').textContent = state.checkinTimeStr;
+      const completionDate = state.completedAt ? new Date(state.completedAt) : new Date();
+      document.getElementById('certTimestamp').textContent = completionDate.toLocaleDateString() + ' ' + completionDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      saveState();
+
+      const certView = document.getElementById('certificateView');
+      certView.style.display = 'block';
+      certView.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function retakeQuiz() {
+      const confirmRetake = confirm("Are you sure you want to retake the assessment? A new set of questions will be generated.");
+      if (confirmRetake) {
+        state.attempt++;
+        initQuiz(false);
+        saveState();
+      }
+    }
+  </script>
+</body>
+</html>
